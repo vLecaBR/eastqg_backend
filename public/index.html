@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Produtos ML</title>
+</head>
+<body>
+  <h1>Produtos do Mercado Livre</h1>
+  <button onclick="getProducts()">Carregar Produtos</button>
+  <pre id="output"></pre>
+
+  <script>
+    async function getProducts() {
+      const res = await fetch('/api/products');
+      const data = await res.json();
+      document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>

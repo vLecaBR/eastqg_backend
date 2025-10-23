@@ -1,0 +1,11 @@
+ID_APP: 7915796918768272
+SECRET_KEY: dFHqY6p0wDQEN6nmSW9yqwmKwoNeByux
+REDIRECT_URI:https://eastqg.vercel.app/
+CODE:
+access_token = 'APP_USR-7915796918768272-102314-3752f3c6c6e635e63a16f9b516ddbf32-290679032';
+refresh_token = 'TG-68fa741b97cd400001101359-290679032';
+
+code=TG-68fa2b7091e8b70001cd53c2-290679032
+
+https://auth.mercadolivre.com.br/authorization?response_type=code&client_id=7915796918768272&redirect_uri=https://eastqg.vercel.app/
+
