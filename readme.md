@@ -104,12 +104,12 @@ Retorna a lista de produtos cadastrados pelo vendedor (`USER_ID`) no Mercado Liv
 Retorna todos os detalhes de um produto pelo seu ID no Mercado Livre.
 
 #### 🧠 Exemplo de uso:
-\`\`\`bash
+```bash
 GET http://localhost:3000/api/product/MLB5844608196
-\`\`\`
+```
 
 #### 📦 Exemplo de retorno:
-\`\`\`json
+```json
 {
   "id": "MLB5844608196",
   "title": "Filtro De Ar Cônico + Filtro De Respiro De Óleo Race Chrome",
@@ -124,7 +124,7 @@ GET http://localhost:3000/api/product/MLB5844608196
   "warranty": "Garantia do vendedor: 20 dias",
   "seller_id": 290679032
 }
-\`\`\`
+```
 
 > ✅ Aqui é onde você consegue obter todos os dados completos, inclusive atributos e garantia.
 
