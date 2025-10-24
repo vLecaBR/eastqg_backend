@@ -1,4 +1,3 @@
-cat << 'EOF' > README.md
 # 🛠️ EastQG Backend
 
 Backend do projeto **EastQG**, responsável por fornecer dados de produtos e serviços para o front-end, integrando com a API do **Mercado Livre** para listar produtos do nosso vendedor e fornecer detalhes individuais de cada item.
