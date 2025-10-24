@@ -12,7 +12,7 @@ const app = express();
 
 // 🔥 habilita CORS pro front (localhost:5173)
 app.use(cors({
-  origin: 'http://localhost:5173', // endereço do teu front Vite/React
+  origin: 'https://eastqg.vercel.app/', // endereço do teu front Vite/React http://localhost:5173
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
