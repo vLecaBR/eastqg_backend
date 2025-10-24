@@ -4,11 +4,16 @@ import { USER_ID } from '../config/config.js';
 
 const BASE_URL = 'https://api.mercadolibre.com';
 
-// 🔹 Função pra buscar o nome da categoria
+// 🔹 Função pra buscar o nome da categoria com proteção contra HTML/erros
 async function getCategoryName(categoryId) {
   try {
     const res = await fetch(`${BASE_URL}/categories/${categoryId}`);
-    if (!res.ok) return null;
+    const contentType = res.headers.get('content-type') || '';
+
+    if (!res.ok || !contentType.includes('application/json')) {
+      console.warn(`⚠️ Categoria inválida ou inacessível: ${categoryId}`);
+      return null;
+    }
 
     const data = await res.json();
     return data.name || null;
@@ -41,6 +46,13 @@ export async function getProductsBySeller(offset = 0, limit = 10) {
         const productRes = await fetch(`${BASE_URL}/items/${itemId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
+        const contentType = productRes.headers.get('content-type') || '';
+
+        if (!productRes.ok || !contentType.includes('application/json')) {
+          console.warn(`⚠️ Produto inválido ou inacessível: ${itemId}`);
+          return null;
+        }
+
         const product = await productRes.json();
 
         const categoryName = product.category_id
@@ -77,16 +89,15 @@ export async function getProductById(itemId) {
   const token = await getAccessToken();
   const url = `${BASE_URL}/items/${itemId}`;
 
-  const res = await fetch(url, {
-    headers: { Authorization: `Bearer ${token}` }
-  });
+  const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+  const contentType = res.headers.get('content-type') || '';
+
+  if (!res.ok || !contentType.includes('application/json')) {
+    console.error(`❌ Produto inválido ou inacessível: ${itemId}`);
+    throw new Error(`Erro ao buscar produto ${itemId}`);
+  }
 
   const product = await res.json();
-
-  if (!res.ok) {
-    console.error('❌ Erro ao buscar item:', product);
-    throw new Error(product.message || 'Erro ao buscar item');
-  }
 
   const categoryName = product.category_id
     ? await getCategoryName(product.category_id)
