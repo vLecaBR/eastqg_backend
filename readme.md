@@ -41,26 +41,26 @@ Backend do projeto **EastQG**, responsável por fornecer dados de produtos e ser
 ## ⚙️ Configuração
 
 1. Clone o repositório:  
-   \`\`\`bash
+   ```bash
    git clone <url-do-repo>
-   \`\`\`
+   ```
 
 2. Instale as dependências:  
-   \`\`\`bash
+   ```bash
    npm install
-   \`\`\`
+   ```
 
 3. Configure seu arquivo **config/config.js**:  
-   \`\`\`js
+   ```js
    export const USER_ID = '<SEU_USER_ID>';
-   \`\`\`
+   ```
 
 4. Configure o **tokenService.js** para gerar o token de acesso do Mercado Livre.
 
 5. Rode o servidor:  
-   \`\`\`bash
+   ```bash
    npm start
-   \`\`\`
+   ```
 
 > O backend vai rodar por padrão em:  
 > 🖥️ `http://localhost:3000`
@@ -152,6 +152,3 @@ GET http://localhost:3000/api/product/MLB5844608196
 - Adicionar **paginação e filtros avançados** na rota de produtos.  
 - Criar **documentação automatizada** via Swagger ou Postman Collection.  
 
----
-
-EOF
