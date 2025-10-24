@@ -16,7 +16,7 @@ Backend do projeto **EastQG**, responsável por fornecer dados de produtos e ser
 
 ## 📁 Estrutura do projeto
 
-\`\`\`
+```
 /backend
 │
 ├─ /config
@@ -34,7 +34,7 @@ Backend do projeto **EastQG**, responsável por fornecer dados de produtos e ser
 │
 ├─ index.js                # Arquivo principal do servidor Express
 └─ package.json
-\`\`\`
+```
 
 ---
 
@@ -76,7 +76,7 @@ Backend do projeto **EastQG**, responsável por fornecer dados de produtos e ser
 Retorna a lista de produtos cadastrados pelo vendedor (`USER_ID`) no Mercado Livre.
 
 #### 🧾 Exemplo de retorno:
-\`\`\`json
+```json
 [
   {
     "id": "MLB4144510177",
@@ -90,7 +90,7 @@ Retorna a lista de produtos cadastrados pelo vendedor (`USER_ID`) no Mercado Liv
     "permalink": "https://produto.mercadolivre.com.br/MLB-4144510177-dockstation-dell-universal-d6000-com-fonte-130w-_JM"
   }
 ]
-\`\`\`
+```
 
 > ⚠️ Observação: O campo `category` retorna apenas o **ID da categoria** (ex.: `MLB430800`).  
 > Não há `category_name` nesta rota.
