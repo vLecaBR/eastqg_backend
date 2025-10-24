@@ -1,16 +1,16 @@
 cat << 'EOF' > README.md
-# EastQG Backend
+# 🛠️ EastQG Backend
 
-Backend do projeto **EastQG**, responsável por fornecer dados de produtos e serviços para o front-end, integrando com a API do Mercado Livre para listar produtos do nosso vendedor e fornecer detalhes individuais de cada item.
+Backend do projeto **EastQG**, responsável por fornecer dados de produtos e serviços para o front-end, integrando com a API do **Mercado Livre** para listar produtos do nosso vendedor e fornecer detalhes individuais de cada item.
 
 ---
 
 ## 📦 Tecnologias utilizadas
 
-- **Node.js** – Runtime para rodar o backend.
-- **Express** – Framework para criar o servidor e os endpoints.
-- **node-fetch** – Para fazer requisições HTTP para a API do Mercado Livre.
-- **Hooks customizados** – Para gerenciar token de acesso e persistência de dados.
+- **Node.js** – Runtime para rodar o backend  
+- **Express** – Framework para criar o servidor e os endpoints  
+- **node-fetch** – Para fazer requisições HTTP à API do Mercado Livre  
+- **Hooks customizados** – Para gerenciar token de acesso e persistência de dados  
 
 ---
 
@@ -30,7 +30,7 @@ Backend do projeto **EastQG**, responsável por fornecer dados de produtos e ser
 │   └─ tokenService.js     # Funções para obter token de acesso
 │
 ├─ /routes
-│   └─ productRoutes.js    # Rotas para produtos
+│   └─ productsRoute.js    # Rotas para produtos
 │
 ├─ index.js                # Arquivo principal do servidor Express
 └─ package.json
@@ -40,29 +40,30 @@ Backend do projeto **EastQG**, responsável por fornecer dados de produtos e ser
 
 ## ⚙️ Configuração
 
-1. Clone o repositório:
-\`\`\`bash
-git clone <url-do-repo>
-\`\`\`
+1. Clone o repositório:  
+   \`\`\`bash
+   git clone <url-do-repo>
+   \`\`\`
 
-2. Instale as dependências:
-\`\`\`bash
-npm install
-\`\`\`
+2. Instale as dependências:  
+   \`\`\`bash
+   npm install
+   \`\`\`
 
-3. Configure seu arquivo \`config/config.js\`:
-\`\`\`js
-export const USER_ID = '<SEU_USER_ID>';
-\`\`\`
+3. Configure seu arquivo **config/config.js**:  
+   \`\`\`js
+   export const USER_ID = '<SEU_USER_ID>';
+   \`\`\`
 
-4. Configure o \`tokenService.js\` para gerar o token de acesso do Mercado Livre.
+4. Configure o **tokenService.js** para gerar o token de acesso do Mercado Livre.
 
-5. Rode o servidor:
-\`\`\`bash
-npm start
-\`\`\`
+5. Rode o servidor:  
+   \`\`\`bash
+   npm start
+   \`\`\`
 
-O backend vai rodar por padrão em \`http://localhost:3000\`.
+> O backend vai rodar por padrão em:  
+> 🖥️ `http://localhost:3000`
 
 ---
 
@@ -70,11 +71,11 @@ O backend vai rodar por padrão em \`http://localhost:3000\`.
 
 ### 1. Listar produtos do vendedor
 
-**GET** \`/api/products\`
+**GET** `/api/products`
 
-- Retorna a lista de produtos cadastrados pelo vendedor (\`USER_ID\`) no Mercado Livre.
-- Exemplo de retorno:
+Retorna a lista de produtos cadastrados pelo vendedor (`USER_ID`) no Mercado Livre.
 
+#### 🧾 Exemplo de retorno:
 \`\`\`json
 [
   {
@@ -91,22 +92,23 @@ O backend vai rodar por padrão em \`http://localhost:3000\`.
 ]
 \`\`\`
 
-> ⚠️ Observação: O campo \`category\` retorna apenas o **ID da categoria** (ex.: \`MLB430800\`). Não há \`category_name\` nesta rota.
+> ⚠️ Observação: O campo `category` retorna apenas o **ID da categoria** (ex.: `MLB430800`).  
+> Não há `category_name` nesta rota.
 
 ---
 
 ### 2. Detalhes de um produto específico
 
-**GET** \`/api/product/:id\`
+**GET** `/api/product/:id`
 
-- Retorna todos os detalhes de um produto pelo seu ID no Mercado Livre.
-- Exemplo de uso:
+Retorna todos os detalhes de um produto pelo seu ID no Mercado Livre.
+
+#### 🧠 Exemplo de uso:
 \`\`\`bash
 GET http://localhost:3000/api/product/MLB5844608196
 \`\`\`
 
-- Exemplo de retorno:
-
+#### 📦 Exemplo de retorno:
 \`\`\`json
 {
   "id": "MLB5844608196",
@@ -130,23 +132,26 @@ GET http://localhost:3000/api/product/MLB5844608196
 
 ## 💡 Observações importantes
 
-- O backend **não precisa de \`category_name\`** na lista de produtos. Se precisar do nome da categoria, ele pode ser buscado individualmente pelo produto no \`/api/product/:id\`.
-- Se o frontend exibir o ID da categoria no lugar do nome, isso é normal.
-- A versão do código que integra com \`category_name\` através de \`/categories/:id\` da API do Mercado Livre não é confiável, pois a API oficial não garante que essa rota funcione para todos os casos. Por isso, deixamos de usar.
+- O backend **não precisa de `category_name`** na lista de produtos.  
+  Se precisar do nome da categoria, ele pode ser buscado individualmente via `/api/product/:id`.
+- Se o frontend exibir o ID da categoria no lugar do nome, isso é **comportamento esperado**.
+- A API `/categories/:id` do Mercado Livre existe, mas **não é garantida** em todos os domínios e pode retornar vazio.  
+  Por isso, optou-se por não usá-la no backend principal.
 
 ---
 
 ## 🔗 Referências
 
-- [API Mercado Livre](https://developers.mercadolibre.com.ar/pt_br/)
+- [📘 Documentação oficial da API Mercado Livre](https://developers.mercadolibre.com.ar/pt_br/)
 
 ---
 
-## 📝 Futuras melhorias
+## 🧩 Futuras melhorias
 
-- Criar cache para os produtos e evitar múltiplas requisições desnecessárias à API do Mercado Livre.
-- Adicionar paginação e filtros na rota de produtos.
-- Criar documentação automatizada usando Swagger ou Postman Collection.
+- Criar **cache local** para reduzir requisições repetidas à API.  
+- Adicionar **paginação e filtros avançados** na rota de produtos.  
+- Criar **documentação automatizada** via Swagger ou Postman Collection.  
 
 ---
+
 EOF
