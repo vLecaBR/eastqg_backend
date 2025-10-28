@@ -3,7 +3,7 @@ import { getProductsBySeller, getProductById } from '../services/meliservice.js'
 
 const router = express.Router();
 
-// 🔹 Lista de produtos do vendedor (retorna produtos completos)
+// Lista de produtos do vendedor (retorna produtos completos)
 router.get('/products', async (req, res) => {
   try {
     const { offset = 0, limit = 10 } = req.query;
@@ -13,11 +13,10 @@ router.get('/products', async (req, res) => {
       return res.json([]); // retorna array vazio se não houver produtos
     }
 
-    // 🔸 Busca os detalhes de cada produto usando o getProductById
+    // Busca os detalhes de cada produto usando o getProductById
     const products = await Promise.all(
       data.results.map(async (id) => {
         const productData = await getProductById(id);
-
         // Monta um objeto simplificado pro front
         return {
           id: productData.id,
@@ -43,7 +42,7 @@ router.get('/products', async (req, res) => {
   }
 });
 
-// 🔹 Detalhes de um produto específico
+// Detalhes de um produto específico
 router.get('/product/:id', async (req, res) => {
   try {
     const { id } = req.params;
