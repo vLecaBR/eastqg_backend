@@ -17,7 +17,7 @@ export async function getProductsBySeller(offset = 0, limit = 10) {
     throw new Error(data.message || 'Erro ao buscar produtos');
   }
 
-  return data; // ✅ só retorna o que o ML já devolve
+  return data; // só retorna o que o ML já devolve
 }
 
 export async function getProductById(itemId) {
@@ -35,5 +35,5 @@ export async function getProductById(itemId) {
     throw new Error(data.message || 'Erro ao buscar item');
   }
 
-  return data; // ✅ sem mexer em categoria ou mapear objeto customizado
+  return data;
 }
