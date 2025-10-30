@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { getAccessToken } from './tokenService.js';
+import { getAccessToken } from './token.service.js';
 import { USER_ID } from '../config/config.js';
 
 export async function getProductsBySeller(offset = 0, limit = 10) {

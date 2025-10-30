@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import cors from 'cors';
 import { PORT } from './config/config.js';
-import productsRouter from './routes/productsRoute.js';
+import productsRouter from './routes/products.route.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

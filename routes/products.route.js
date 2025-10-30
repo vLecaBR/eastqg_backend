@@ -1,5 +1,5 @@
 import express from 'express';
-import { getProductsBySeller, getProductById } from '../services/meliservice.js';
+import { getProductsBySeller, getProductById } from '../services/meli.service.js';
 
 const router = express.Router();
 
