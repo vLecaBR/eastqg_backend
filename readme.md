@@ -151,3 +151,4 @@ GET http://localhost:3000/api/product/MLB5844608196
 - Adicionar **paginação e filtros avançados** na rota de produtos.  
 - Criar **documentação automatizada** via Swagger ou Postman Collection.  
 
+## teste merge
