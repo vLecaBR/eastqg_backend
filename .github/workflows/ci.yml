@@ -1,27 +1,19 @@
-# Nome do Workflow
 name: Node.js CI
 
-# Roda em pull requests para a branch main
 on:
   pull_request:
     branches: [ main ]
 
 jobs:
-  install-dependencies:
-    # Máquina virtual que o GitHub vai usar
+  # O nome aqui "build" é o que vai aparecer como status check
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      # 1. Clona seu repositório para a máquina
       - uses: actions/checkout@v3
-
-      # 2. Configura o Node.js
       - name: Use Node.js 18.x
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x' # Use a versão do seu projeto
+          node-version: '18.x'
           cache: 'npm'
-
-      # 3. Apenas instala as dependências
       - name: Install dependencies
         run: npm install
